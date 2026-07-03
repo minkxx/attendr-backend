@@ -31,7 +31,7 @@
     ]
   },
   "dependencies": {
-    "@better-auth/expo": "^1.6.19",
+    "@better-auth/expo": "^1.6.23",
     "@nestjs/bullmq": "^11.0.4",
     "@nestjs/common": "^11.1.27",
     "@nestjs/config": "^4.0.4",
@@ -58,7 +58,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@commitlint/cli": "^21.0.2",
+    "@commitlint/cli": "^21.2.0",
     "@commitlint/config-conventional": "^21.2.0",
     "@eslint/eslintrc": "^3.2.0",
     "@eslint/js": "^10.0.1",
@@ -68,7 +68,7 @@
     "@types/escape-html": "^1.0.4",
     "@types/express": "^5.0.0",
     "@types/jest": "^30.0.0",
-    "@types/node": "^26.0.0",
+    "@types/node": "^26.1.0",
     "@types/nodemailer": "^8.0.1",
     "@types/pg": "^8.20.0",
     "@types/supertest": "^7.0.0",
