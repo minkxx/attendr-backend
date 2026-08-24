@@ -11,8 +11,7 @@ import { expo } from '@better-auth/expo';
 
 const authExtensions = {
   sendEmail: null as
-    | null
-    | ((to: string, url: string, name: string) => Promise<void>),
+    null | ((to: string, url: string, name: string) => Promise<void>),
 };
 
 @Module({
