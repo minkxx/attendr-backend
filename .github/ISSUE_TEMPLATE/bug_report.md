@@ -1,6 +1,6 @@
 ---
 name: 🐛 Bug Report
-about: Create a report to help us improve AttendEase
+about: Create a report to help us improve Attendr
 title: '[BUG] '
 labels: bug
 ---

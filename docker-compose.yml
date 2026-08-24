@@ -1,12 +1,12 @@
 services:
   db:
     image: postgres:17
-    container_name: attendease_postgres
+    container_name: attendr_postgres
     restart: always
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_DB=attendease
+      - POSTGRES_DB=attendr
     ports:
       - '5432:5432'
     volumes:
@@ -14,7 +14,7 @@ services:
 
   redis:
     image: redis:7-alpine
-    container_name: attendease_redis
+    container_name: attendr_redis
     restart: always
     ports:
       - '6379:6379'

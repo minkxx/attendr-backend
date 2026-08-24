@@ -1,5 +1,5 @@
 {
-  "name": "attendease-server",
+  "name": "attendr-backend",
   "version": "0.3.2",
   "description": "High-performance, multi-tenant academic attendance management API built with NestJS, Prisma ORM, and PostgreSQL. Features real-time consensus polling via WebSockets and Redis Pub/Sub, automated geofenced validation, and predictive analytics to optimize student attendance compliance thresholds.",
   "author": "monsurcodes",
