@@ -117,13 +117,13 @@ docker compose up -d
 ### 6. Run Database Migration
 
 ```bash
-pnpm dlx prisma migrate dev --name init
+pnpm prisma migrate dev --name init
 ```
 
 ### 7. Generate Prisma Client
 
 ```bash
-pnpm dlx prisma generate
+pnpm prisma generate
 ```
 
 ### 8. Start Development Server
