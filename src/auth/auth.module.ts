@@ -1,4 +1,4 @@
-import { Module, OnModuleInit } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { AuthModule as NestjsBetterAuthModule } from '@thallesp/nestjs-better-auth';
 import { EmailModule } from '../email/email.module';
 import { EmailService } from '../email/email.service';
@@ -9,16 +9,11 @@ import { PrismaClient } from '../common/generated/prisma/client';
 import { DATABASE_CONNECTION } from '../database/database-connection';
 import { expo } from '@better-auth/expo';
 
-const authExtensions = {
-  sendEmail: null as
-    null | ((to: string, url: string, name: string) => Promise<void>),
-};
-
 @Module({
   imports: [
     EmailModule,
     NestjsBetterAuthModule.forRootAsync({
-      useFactory: (prismaClient: PrismaClient) => ({
+      useFactory: (prismaClient: PrismaClient, emailService: EmailService) => ({
         auth: betterAuth({
           database: prismaAdapter(prismaClient, {
             provider: 'postgresql',
@@ -38,13 +33,11 @@ const authExtensions = {
               user: { email: string; name: string };
               url: string;
             }) {
-              if (authExtensions.sendEmail) {
-                await authExtensions.sendEmail(user.email, url, user.name);
-              } else {
-                throw new Error(
-                  'EmailService not initialized — sendVerificationEmail called before AuthModule.onModuleInit',
-                );
-              }
+              await emailService.sendVerificationEmail(
+                user.email,
+                url,
+                user.name,
+              );
             },
           },
 
@@ -53,11 +46,7 @@ const authExtensions = {
           trustedOrigins: [
             process.env.FRONTEND_URL ?? '',
             ...(process.env.NODE_ENV === 'development'
-              ? [
-                  'exp://', // Trust all Expo URLs (prefix matching)
-                  'exp://**', // Trust all Expo URLs (wildcard matching)
-                  'exp://192.168.*.*:*/**', // Trust 192.168.x.x IP range with any port and path
-                ]
+              ? ['exp://', 'exp://**', 'exp://192.168.*.*:*/**']
               : []),
           ],
 
@@ -67,17 +56,9 @@ const authExtensions = {
           },
         }),
       }),
-      inject: [DATABASE_CONNECTION],
+      inject: [DATABASE_CONNECTION, EmailService],
     }),
   ],
   exports: [NestjsBetterAuthModule],
 })
-export class AuthModule implements OnModuleInit {
-  constructor(private readonly emailService: EmailService) {}
-
-  onModuleInit() {
-    authExtensions.sendEmail = async (to, url, name) => {
-      await this.emailService.sendVerificationEmail(to, url, name);
-    };
-  }
-}
+export class AuthModule {}
