@@ -23,15 +23,7 @@ export const envSchema = z.object({
 
   REDIS_URL: z.url({ message: 'REDIS_URL must be a valid URL' }),
 
-  SMTP_MAIL_HOST: z.string({ message: 'SMTP_MAIL_HOST is required' }),
-
-  SMTP_MAIL_PORT: z.coerce.number({
-    message: 'SMTP_MAIL_PORT must be a number',
-  }),
-
-  SMTP_MAIL_USER: z.string({ message: 'SMTP_MAIL_USER is required' }),
-
-  SMTP_MAIL_PASS: z.string({ message: 'SMTP_MAIL_PASS is required' }),
+  BREVO_API_KEY: z.string({ message: 'BREVO_API_KEY is required' }),
 
   SMTP_MAIL_FROM: z.string({ message: 'SMTP_MAIL_FROM is required' }),
 });
