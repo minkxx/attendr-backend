@@ -8,3 +8,6 @@ allowBuilds:
   msgpackr-extract: true
   prisma: true
   unrs-resolver: true
+
+overrides:
+  'ioredis': '5.11.1'
