@@ -22,7 +22,8 @@ export class EmailService implements OnModuleInit {
 
   async onModuleInit() {
     if (!this.transporter) {
-      throw Error('Email transporter not initiated!');
+      this.logger.warn('Email transporter not initiated!');
+      return;
     }
 
     try {
@@ -30,13 +31,13 @@ export class EmailService implements OnModuleInit {
       this.logger.log('SMTP connection verified');
     } catch (error) {
       this.logger.error('SMTP connection verification failed:', error);
-      throw error;
     }
   }
 
   async sendVerificationEmail(to: string, url: string, name: string) {
     if (!this.transporter) {
-      throw new Error('EmailService not initialized');
+      this.logger.warn('EmailService not initialized');
+      return;
     }
 
     const safeName = escapeHtml(name || 'there');
@@ -62,7 +63,6 @@ export class EmailService implements OnModuleInit {
       await this.transporter.sendMail(mailOptions);
     } catch (error) {
       this.logger.error('Failed to send verification email:', error);
-      throw error;
     }
   }
 }
