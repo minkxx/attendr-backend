@@ -5,6 +5,9 @@ on:
     branches: [dev, main]
     paths: ['prisma/**']
 
+permissions:
+  contents: read
+
 jobs:
   migrate:
     runs-on: ubuntu-latest
