@@ -43,7 +43,7 @@ export class EmailService implements OnModuleInit {
     const safeUrl = new URL(url).href;
 
     const mailOptions = {
-      from: `"${this.configService.get<string>('APP_NAME') || 'AttendEase'}" <${this.configService.get<string>('SMTP_MAIL_FROM')}>`,
+      from: `"${this.configService.get<string>('APP_NAME') || 'Attendr'}" <${this.configService.get<string>('SMTP_MAIL_FROM')}>`,
       to,
       subject: 'Verify your email address',
       html: `

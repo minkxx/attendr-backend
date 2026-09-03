@@ -33,7 +33,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Generate Prisma Client
-        run: pnpm dlx prisma generate
+        run: pnpm prisma generate
 
       - name: Run Formatter Check
         run: pnpm format

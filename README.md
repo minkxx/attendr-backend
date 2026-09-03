@@ -1,4 +1,4 @@
-# AttendEase Server
+# Attendr Backend
 
 > [!WARNING]
 >
@@ -10,7 +10,7 @@
 
 ## Overview
 
-**AttendEase Server** is a high-performance, multi-tenant backend API designed to power smart academic attendance systems for schools, colleges, and learning institutions.
+**Attendr Backend** is a high-performance, multi-tenant backend API designed to power smart academic attendance systems for schools, colleges, and learning institutions.
 
 Built with a modern TypeScript backend stack, it combines real-time communication, secure authentication, geofenced attendance validation, distributed background processing, and intelligent attendance analytics.
 
@@ -69,8 +69,8 @@ The project focuses on solving common classroom attendance challenges by enablin
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/monsurcodes/AttendEase-Server.git
-cd AttendEase-Server
+git clone https://github.com/minkxx/attendr-backend.git
+cd attendr-backend
 ```
 
 ### 2. Install pnpm
@@ -117,13 +117,13 @@ docker compose up -d
 ### 6. Run Database Migration
 
 ```bash
-pnpm dlx prisma migrate dev --name init
+pnpm prisma migrate dev --name init
 ```
 
 ### 7. Generate Prisma Client
 
 ```bash
-pnpm dlx prisma generate
+pnpm prisma generate
 ```
 
 ### 8. Start Development Server

@@ -10,8 +10,8 @@ POST {{BASE_URL}}/api/auth/sign-up/email
 Content-Type: application/json
 
 {
-    "name": "Sarixim",
-    "email": "sarixim159@synsky.com",
+    "name": "Doyiy",
+    "email": "doyiy71368@kikaga.com",
     "password": "Pass@123"
 }
 
@@ -21,7 +21,7 @@ POST {{BASE_URL}}/api/auth/sign-in/email
 Content-Type: application/json
 
 {
-    "email": "pocorib849@ocuser.com",
+    "email": "sarixim159@synsky.com",
     "password": "Pass@123"
 }
 

@@ -5,7 +5,7 @@ export const envSchema = z.object({
     .enum(['development', 'production', 'test'])
     .default('development'),
 
-  APP_NAME: z.string().default('AttendEase'),
+  APP_NAME: z.string().default('Attendr'),
 
   BASE_URL: z.url().default('http://localhost:3000'),
 

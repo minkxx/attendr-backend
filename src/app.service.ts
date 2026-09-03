@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 export class AppService {
   home() {
     return {
-      message: 'AttendEase is running!',
+      message: 'attendr-backend is running!',
     };
   }
 

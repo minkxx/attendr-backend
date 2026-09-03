@@ -4,15 +4,17 @@ import {
   MessageBody,
   WebSocketServer,
   OnGatewayConnection,
+  ConnectedSocket,
 } from '@nestjs/websockets';
-import { Server, Socket } from 'socket.io';
-import { Inject, Logger } from '@nestjs/common';
+import { Server } from 'socket.io';
+import { Inject, Logger, UseGuards } from '@nestjs/common';
 import Redis from 'ioredis';
 import { REDIS_CLIENT } from '../redis/redis-client';
 import { DATABASE_CONNECTION } from '../database/database-connection';
 import { PrismaClient } from '../common/generated/prisma/client';
 import { InjectQueue } from '@nestjs/bullmq';
 import { Queue } from 'bullmq';
+import { type AuthenticatedSocket, WsAuthGuard } from '../common/ws-auth.guard';
 
 interface CastVotePayload {
   roomId: string;
@@ -21,6 +23,7 @@ interface CastVotePayload {
   supportsBunk: boolean;
 }
 
+@UseGuards(WsAuthGuard)
 @WebSocketGateway({
   cors: { origin: '*' },
   namespace: 'polls',
@@ -35,7 +38,7 @@ export class PollingGateway implements OnGatewayConnection {
     @InjectQueue('poll-sync') private readonly pollSyncQueue: Queue,
   ) {}
 
-  async handleConnection(client: Socket) {
+  async handleConnection(client: AuthenticatedSocket) {
     const roomId = client.handshake.query.roomId as string;
     if (roomId) {
       await client.join(`room:${roomId}`);
@@ -44,8 +47,15 @@ export class PollingGateway implements OnGatewayConnection {
   }
 
   @SubscribeMessage('castVote')
-  async handleCastVote(@MessageBody() payload: CastVotePayload) {
-    const { roomId, pollId, userId, supportsBunk } = payload;
+  async handleCastVote(
+    @ConnectedSocket() client: AuthenticatedSocket,
+    @MessageBody() payload: CastVotePayload,
+  ) {
+    const { roomId, pollId, supportsBunk } = payload;
+
+    const userId = client.data.user.id;
+
+    console.log(userId, payload);
 
     if (!roomId || !pollId || !userId) return;
 
@@ -63,9 +73,6 @@ export class PollingGateway implements OnGatewayConnection {
         .to(`room:${roomId}`)
         .emit('pollError', { pollId, message: 'Poll does not exist.' });
     }
-
-    console.log('Poll expired: ', poll.expiresAt.getTime() < Date.now());
-    console.log('Member not verified: ', !roomMember || !roomMember.isApproved);
 
     if (poll.isLocked || poll.expiresAt.getTime() < Date.now()) {
       return this.server.to(`room:${roomId}`).emit('pollError', {

@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.3](https://github.com/minkxx/attendr-backend/compare/v0.3.2...v0.3.3) (2026-09-03)
+
+
+### Features
+
+* custom auth guard for web socket gateway ([a6473ce](https://github.com/minkxx/attendr-backend/commit/a6473ce4c1656da8531e669ce617060a48084671))
+* use user and password from env directly ([9f0869e](https://github.com/minkxx/attendr-backend/commit/9f0869e01d1fc735a201ad437b553cbceb80e61d))
+* web socket gateway is proctected using custom auth guard ([65f7c90](https://github.com/minkxx/attendr-backend/commit/65f7c90d45d43e6ad3b7fcef4136d71cce2dfd4a))
+
+
+### Bug Fixes
+
+* add assignees field to bug report template ([e7596dc](https://github.com/minkxx/attendr-backend/commit/e7596dcbe2ac6de40a795d7d99182658a5642e14))
+* broken lockfile ([f16c558](https://github.com/minkxx/attendr-backend/commit/f16c5583788d44a6faad507e5e114da5e21b4fd7))
+* fix broken lockfile ([5a70772](https://github.com/minkxx/attendr-backend/commit/5a70772b715f719836910723ab0ecdd2f8943807))
+* remove description and author fields from package.json ([6f3ee21](https://github.com/minkxx/attendr-backend/commit/6f3ee2123ce8f452a8e3a27703f251c42e970ab0))
+* remove dlx from prisma commands in README.md ([8ed519f](https://github.com/minkxx/attendr-backend/commit/8ed519ff437d5db77db87a4b2fb7dc0342d6335b))
+* removed ^ from package versions ([449c7ab](https://github.com/minkxx/attendr-backend/commit/449c7abf703da39a44ce03a190fd8d50efd1227a))
+* simplify type declaration for sendEmail in authExtensions ([0487d92](https://github.com/minkxx/attendr-backend/commit/0487d92652de81c505b4bdb7c2c271e07bec8eac))
+* update DATABASE_URL, POSTGRES_USER, and POSTGRES_PASSWORD in .env.example ([0172bbd](https://github.com/minkxx/attendr-backend/commit/0172bbd34a001b7c828437576b5919091d0aac32))
+* update example user data in API requests ([8c8e8f3](https://github.com/minkxx/attendr-backend/commit/8c8e8f3e10dc7c53da8c1eb9310ab5119c20f00a))
+* update project name from AttendEase to Attendr ([e0b311d](https://github.com/minkxx/attendr-backend/commit/e0b311d9c1702bae4420fc200ea7e71f76a24b10))
+
 ### [0.3.2](https://github.com/minkxx/AttendEase-Server/compare/v0.3.1...v0.3.2) (2026-06-30)
 
 
