@@ -1,6 +1,6 @@
 {
   "name": "attendr-backend",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "private": true,
   "scripts": {
     "build": "nest build",
@@ -8,6 +8,11 @@
     "start:dev": "pnpm run clean:info && nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
+    "db:migrate:local": "dotenv -e .env.local -- prisma migrate dev",
+    "db:push:local": "dotenv -e .env.local -- prisma db push",
+    "db:migrate:dev": "dotenv -e .env.dev -- prisma migrate deploy",
+    "db:push:dev": "dotenv -e .env.dev -- prisma db push",
+    "db:migrate:prod": "dotenv -e .env.prod -- prisma migrate deploy",
     "format": "prettier . --write",
     "lint": "eslint --fix",
     "clean:info": "rimraf tsconfig.build.tsbuildinfo",
@@ -69,6 +74,7 @@
     "@types/nodemailer": "8.0.1",
     "@types/pg": "8.20.0",
     "@types/supertest": "7.2.0",
+    "dotenv-cli": "^11.0.0",
     "eslint": "10.6.0",
     "eslint-config-prettier": "10.0.1",
     "eslint-plugin-prettier": "5.2.2",

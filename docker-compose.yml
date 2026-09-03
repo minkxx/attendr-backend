@@ -3,6 +3,8 @@ services:
     image: postgres:17
     container_name: attendr_postgres
     restart: always
+    env_file:
+      - .env.local
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}

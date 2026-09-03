@@ -17,6 +17,10 @@ import { RedisModule } from './redis/redis.module';
     ConfigModule.forRoot({
       validate: validateEnv,
       isGlobal: true,
+      envFilePath: [
+        '.env.local',
+        process.env.NODE_ENV === 'production' ? '.env.prod' : '.env.dev',
+      ],
     }),
     AuthModule,
     UserModule,

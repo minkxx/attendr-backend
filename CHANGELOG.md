@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/minkxx/attendr-backend/compare/v0.3.3...v0.4.0) (2026-09-03)
+
+
+### Features
+
+* add database migration and push scripts for local, dev, and prod environments ([aa8978a](https://github.com/minkxx/attendr-backend/commit/aa8978aeabc52dd080fcb9e4fbfcbdf15a5d2886))
+* add dotenv-cli as a dependency ([d037fd6](https://github.com/minkxx/attendr-backend/commit/d037fd6f66f6d8c2f50737ee1f69c8eb71104d76))
+* add env_file configuration for PostgreSQL service in docker-compose ([2ff7fcc](https://github.com/minkxx/attendr-backend/commit/2ff7fcc5dca212af41c32907f28a36672b7aed36))
+* add GitHub Actions workflow for database migration and deployment ([842ba8b](https://github.com/minkxx/attendr-backend/commit/842ba8b0c9cbf19004b15f1f6badce6d84d467f2))
+* consolidate Redis configuration by replacing REDIS_HOST and REDIS_PORT with REDIS_URL ([1a04183](https://github.com/minkxx/attendr-backend/commit/1a04183dc3d67078706d0726ede51d6fe3a23d40))
+* enhance database connection with SSL configuration based on NODE_ENV ([4fc9295](https://github.com/minkxx/attendr-backend/commit/4fc92957294c4f9374a03b7f4f9a14a7cf943373))
+* refactor Redis configuration to use REDIS_URL instead of host and port ([71b9b76](https://github.com/minkxx/attendr-backend/commit/71b9b767ed87d23432341c33e381209701f45762))
+* update ConfigModule to include dynamic envFilePath configuration ([0715eb7](https://github.com/minkxx/attendr-backend/commit/0715eb707101a267015f21c80ae64408ca21b56f))
+* update database migration scripts to use 'deploy' for dev and prod environments ([51c49c1](https://github.com/minkxx/attendr-backend/commit/51c49c1dbff54675a6ccd14dc560186217263f7c))
+
+
+### Bug Fixes
+
+* fix broken pnpm-lock file ([48f1e3d](https://github.com/minkxx/attendr-backend/commit/48f1e3d54be146bc78958675f52248fe636bb3e9))
+* update .gitignore to exclude all dotenv files except .env.example ([1b38253](https://github.com/minkxx/attendr-backend/commit/1b3825352460bacdc8991401980a25a181c4bc49))
+* update Prisma Client generation command in CI workflow ([ef97b60](https://github.com/minkxx/attendr-backend/commit/ef97b60e4cb9e2cca8a3b812121ddec206be2957))
+
 ### [0.3.3](https://github.com/minkxx/attendr-backend/compare/v0.3.2...v0.3.3) (2026-09-03)
 
 
