@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@better-auth/expo": "1.6.23",
-    "@nestjs/bullmq": "11.0.4",
+    "@nestjs/bullmq": "12.0.0",
     "@nestjs/common": "11.1.27",
     "@nestjs/config": "4.0.4",
     "@nestjs/core": "11.1.27",
